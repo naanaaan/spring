@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<beans xmlns='http://www.springframework.org/schema/beans'
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xsi:schemaLocation='http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd'>
+   
+   <!-- Shooter를 탄생시킨다, Gun을 탄생시킨다 new Shooter, new Gun
+       => 이 탄생작업을 IoC로 (중앙에서 control하여 생성하고, spring container에서 꺼내씀.) 한다. -->
+   <!-- 객체를 콩으로 비유해서 표현. 과거의 방법. -->
+   <bean id='pistol' class='spring.core.ch01.ex01.Pistol'/> <!-- container가 pistol의 탄생에서 죽음까지 관리. 이것이 IoC이다. -->
+   <bean id='rifle' class='spring.core.ch01.ex01.Rifle'/> <!-- container에 rifle bean도 담는다. -->
+   
+   <!-- annotation으로 만들 생성자를 이용한 객체 생성. -->
+   <bean id='shooter1' class='spring.core.ch01.ex02.Shooter'>
+      <constructor-arg value='최한석'/>
+      <constructor-arg ref='pistol'/> <!-- IoC로 생성된 pistol을 dependency로 참조. -->
+   </bean>
+   <!-- annotation으로 만들 setter method이용한 객체 생성. -->
+   <bean id='shooter2' class='spring.core.ch01.ex02.Shooter'>
+      <property name='shooterName' value='한아름'/> <!-- container가 shooter를 call하고 shooterName에 한아름을 넣는다. -->
+      <property name='gun' ref='rifle'/> <!-- reference의 값은 IoC로 만들어져 있는 값만 이용가능하다. -->
+   </bean>
+</beans>
