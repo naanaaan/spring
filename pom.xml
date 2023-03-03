@@ -1,0 +1,31 @@
+<project xmlns='http://maven.apache.org/POM/4.0.0' 
+ 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+ 	xsi:schemaLocation='http://maven.apache.org/POM/4.0.0 
+ 		https://maven.apache.org/xsd/maven-4.0.0.xsd'> <!-- dtd상위 xsd xsd의 태그사용해야함 -->
+  	<modelVersion>4.0.0</modelVersion>
+  	<groupId>com.my</groupId>
+  	<artifactId>spring.core</artifactId>
+  	<version>1.0</version>
+  	<!-- spring.ver이라 쓴건 내가 지은 거 proverty name -->
+  	<properties>
+  		<spring.ver>5.3.22</spring.ver>
+  	</properties>
+  	<!-- 라이브러리 알아서 깔게끔 정보 알려주기 -->
+  	<dependencies>
+  		<dependency>
+  			<groupId>org.springframework</groupId>
+  			<artifactId>spring-context</artifactId>
+  			<version>${spring.ver}</version>
+  		</dependency>
+  		<!-- 여기 lombok 앱에서 스기위해 제품에 lombok이 필요한게아니라 provided
+  			기본설정은 제품에 포함됨 -->
+  		<dependency>
+  			<groupId>org.projectlombok</groupId>
+  			<artifactId>lombok</artifactId>
+  			<version>1.18.24</version>
+  			<scope>provided</scope>
+  		</dependency>
+  		
+  		
+  	</dependencies>
+</project>
