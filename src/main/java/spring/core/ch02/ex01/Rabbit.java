@@ -1,17 +1,19 @@
 package spring.core.ch02.ex01;
 
-public class Calculator {
-	private void calc() {
+public class Rabbit {
+	private void sleep() {
 		try {
 			Thread.sleep((long)(Math.random() * 1000));
-		} catch(Exception e ) {}
+			
+		} catch(Exception e) {}
 	}
 	
-	public void start() {
+	public void start()	{
 		long start = System.currentTimeMillis();
-		calc();
+		sleep();
 		long end = System.currentTimeMillis();
 		
-		System.out.println("계산기: " + (end - start));
+		System.out.println("레빗: " + (end - start));
 	}
+	
 }
