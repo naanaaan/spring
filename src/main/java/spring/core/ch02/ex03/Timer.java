@@ -17,13 +17,13 @@ public class Timer {
 		System.out.println(jp.toShortString());
 		System.out.println("시작 시각:" + LocalDateTime.now());
 	}
-	
+			//클래스
 	@After("within(spring..Calculator)")//within은 특정 class지정
 	public void clockEnd(JoinPoint jp) {
 		System.out.println(jp.toShortString());
 		System.out.println("종료 시각: " + LocalDateTime.now());
 	}
-	//after보다 먼저 실행됨						//리턴값의 이름을 result?
+	//after보다 먼저 실행됨			//빈아이디			//리턴값의 이름을 result?
 	@AfterReturning(pointcut="bean(calc*)", returning="result")//bean Id calc로 시작하는걸 pointcut으로 삼겠따.
 	public void printResult(JoinPoint jp, int result)//이부분과일치해야함 이위에랑 
 	{

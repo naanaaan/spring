@@ -13,6 +13,7 @@ public class Calculator {
 		System.out.println(1 - 1);
 	}
 	
+	@Log
 	public void divide() {
 		int result = 1 / 0;
 		System.out.println(result);
