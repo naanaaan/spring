@@ -3,6 +3,7 @@ package com.my.spring.web.ch02.ex01;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 //Ioc, 핸드러 매핑등록하기 위해 컨트롤러라는걸 알려줘야함
@@ -31,5 +32,35 @@ public class UserController {	//그릇을 맏늘어줌
 	@GetMapping("22")
 	public String handler22() {
 		return "ch02/ex01/user";
+	}
+	
+	@GetMapping("ch02/ex01/31")
+	public void handler31(User user) {
+		//viewname지정안하면 31이 viewname으로 리턴되고 파라미터를 model로 그대로 리턴한다. 모델명은 Class명따라가는데 앞에 대문자를 소문자로바꿈.
+		user.setUsername("양승일");
+		user.setAge(31);
+	}
+	
+	@GetMapping("ch02/ex01/32") //model name을 위와다르게 따로 지정
+	public void handler32(@ModelAttribute("man") User user) {
+		user.setUsername("서준환");
+		user.setAge(32);
+	}
+	//클라이언트 요청 handler이 받고 reponse는 결국 view에 servlet에서 만듬.
+	@GetMapping("ch02/ex01/41")
+	public User handler41(User user) {
+		user.setUsername("김가람");
+		user.setAge(21);
+		
+		return user;
+	}
+	
+	@GetMapping("ch02/ex01/42")
+	@ModelAttribute("man")
+	public User handler42(User user) {
+		user.setUsername("박건우");
+		user.setAge(41);
+		
+		return user;
 	}
 }
