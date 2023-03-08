@@ -17,7 +17,7 @@ public class UserController {
 	}
 	
 	//이건 post ch02/ex03/user이다.
-	@PostMapping
+	@PostMapping           //user을 command라함 model역할과 파라미터역할두개하는걸
 	public String userOut(User user) {
 		return "ch02/ex03/userOut";
 	}
