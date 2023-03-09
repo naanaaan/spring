@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org/DTD Mapper 3.0/EN'
+	'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace='com.my.spring.web.ch04.dao.map.EmployeeMap'>
+<!-- mybatis.type-aliases-package=com.my.spring.web.ch04.domain이설정때매 도메인 별명됨 -->
+	<select id='selectEmployee' resultType='employee'>
+	<!-- mybatis.configuration.map-underscore-to-camel-case=true 이설정떄문에 칼럼의 별명을 안해도 알아서 맴버변수와 칼럼 별명 일치됨 _없애는듯? -->
+		select employee_id, last_name, hire_date
+		from employees
+		where employee_id = ${employeeId}
+	</select>
+</mapper>

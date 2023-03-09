@@ -22,9 +22,10 @@ public class UserController {
 		return "ch03/ex02/userIn";
 	}
 	
-	@PostMapping
-	public String userOut(UserDto userDto, HttpServletRequest request, User user) {
+	@PostMapping   //userIn 파라미터가 user과 userdto 필드 양쪽 다 들어가네?
+	public String userOut(UserDto userDto, User user) {
 		String filename = userDto.getFace().getOriginalFilename();
+		
 		saveFile(attachPath + "/" + filename, userDto.getFace());
 		
 		user.setFaceFilename(filename);
