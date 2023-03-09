@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("ch02.home")
+@Controller
 @RequestMapping("ch02/home")
 public class NumController {
 	@GetMapping("numIn") //@Nullable도 가능하긴함
@@ -14,10 +14,9 @@ public class NumController {
 		return "ch02/home/numIn";
 	}
 	
-	@PostMapping("numOut")
-	public String numOut(@ModelAttribute("num")int num) {
-		
-		return "redirect:numIn";
+	@GetMapping("numOut")
+	public String numOut(Number num22) {   //변수명이아니라 Number필드값 num에 파라미터값이 들어가고 number라는 attribute생성
+		return "ch02/home/numOut";
 	}
 }
 /*
