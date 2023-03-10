@@ -8,5 +8,5 @@ public interface UserService {
 	List<User> getUsers();
 	void addUser(User user);
 	void fixUser(User user);
-	void delUSer(int userId);
+	void delUser(int userId);
 }

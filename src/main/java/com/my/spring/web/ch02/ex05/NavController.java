@@ -12,7 +12,7 @@ public class NavController {
 		return "forward:target"; //forward:붙이면 viewName이 아니라 url이된다.
 		//ch02/ex05/target
 	}
-	
+	//forward는 request에 url담기고 redirect는 response에 담아서감 forward는 클라이언트 안걸치고 redirect는 클라이언트 거침
 	@GetMapping("target")
 	public String target() {
 		return "ch02/ex05/target";

@@ -1,4 +1,4 @@
-<%@ page language='java' contentType='text/html; charset=UTF-8' pageEncoding='UTF-8'%>
+<%@ page language='java' contentType='text/html; charset=utf-8' pageEncoding='utf-8' %>
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 <script>
 function listUsers() {
@@ -8,12 +8,11 @@ function listUsers() {
 			users = []
 			userList.forEach(user => {
 				users.push(
-						'<li>' +
-								user.userId + ', ' +
-								user.username + ', ' +
-								user.birthday +
-						'</li>'
-				)
+					'<li>' + 
+						user.userId + ', ' +
+						user.username + ', ' +
+						user.birthday +
+					'</li>')
 			})
 			
 			$('#userList').empty()
@@ -21,12 +20,50 @@ function listUsers() {
 		}
 	})
 }
-$(listUsers)
+
+$(() => {
+	$('#addUserBtn').click(() => {
+		$.ajax({
+			url: 'user/add',
+			method: 'post',
+			contentType: 'application/json',
+			data: JSON.stringify({
+				userId: $('#userId').val(),
+				username: $('#username').val(),
+				birthday: $('#birthday').val()
+			}),
+			success: listUsers
+		})
+	})
+	
+	$('#fixUserBtn').click(() => {
+		$.ajax({
+			url: 'user/fix',
+			method: 'put',
+			contentType: 'application/json',
+			data: JSON.stringify({
+				userId: $('#userId').val(),
+				username: $('#username').val(),
+				birthday: $('#birthday').val()
+			}),
+			success: listUsers
+		})
+	})
+	
+	$('#delUserBtn').click(() => {
+		$.ajax({
+			url: 'user/del/' + $('#userId').val(),
+			method: 'delete',
+			success: listUsers
+		})
+	})
+})
 </script>
+
 <form>
 	ID: <input type='number' id='userId'/><br>
 	이름: <input type='text' id='username'/><br>
-	생일: <input type='date' id='birthday'/><br>
+	생일: <input type='date' id='birthday'/><br>	
 </form>
 
 <nav>
